@@ -24,5 +24,17 @@ namespace GCD0805AppDev.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(Todo todo)
+        {
+            var newTodo = new Todo()
+            {
+                Description = todo.Description,
+                DueDate = todo.DueDate
+            };
+            _context.Todos.Add(newTodo);
+            _context.SaveChanges();
+            return RedirectToAction("Index","Todos");
+        }
     }
 }
