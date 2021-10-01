@@ -1,4 +1,4 @@
-﻿@model GCD0805AppDev.Models.Todo
+﻿@model IEnumerable<GCD0805AppDev.Models.Todo>
 @{
     ViewBag.Title = "Index";
 }
@@ -20,11 +20,14 @@
         </tr>
     </thead>
     <tbody>
+        @foreach (var item in Model)
+        {
         <tr>
-            <th scope="row">@Model.Id</th>
-            <td>@Model.Description</td>
-            <td>@Model.DueDate.ToString("d")</td>
+            <th scope="row">@item.Id</th>
+            <td>@item.Description</td>
+            <td>@item.DueDate.ToString("d")</td>
         </tr>
+        }
     </tbody>
 </table>
 
