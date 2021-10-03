@@ -15,10 +15,31 @@ namespace GCD0805AppDev.Controllers
             _context = new ApplicationDbContext();
         }
         // GET: Categories
+        [HttpGet]
         public ActionResult Index()
         {
             var categories = _context.Categories.ToList();
             return View(categories);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+            var newCategory = new Category()
+            {
+                Description = category.Description,
+            };
+            _context.Categories.Add(newCategory);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Categories");
         }
     }
 }
