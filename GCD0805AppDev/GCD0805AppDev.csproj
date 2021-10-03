@@ -191,6 +191,10 @@
     <Compile Include="Migrations\202110031058031_CreateCategoriesModel.Designer.cs">
       <DependentUpon>202110031058031_CreateCategoriesModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110031450338_ModifyCategoryModel.cs" />
+    <Compile Include="Migrations\202110031450338_ModifyCategoryModel.Designer.cs">
+      <DependentUpon>202110031450338_ModifyCategoryModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -263,6 +267,7 @@
     <Content Include="Views\Todos\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110031058031_CreateCategoriesModel.resx">
       <DependentUpon>202110031058031_CreateCategoriesModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110031450338_ModifyCategoryModel.resx">
+      <DependentUpon>202110031450338_ModifyCategoryModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
