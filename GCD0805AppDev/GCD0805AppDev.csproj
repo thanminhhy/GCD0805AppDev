@@ -182,6 +182,10 @@
     <Compile Include="Migrations\202110010949452_CreateTodosTable.Designer.cs">
       <DependentUpon>202110010949452_CreateTodosTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110030422507_ModifyTodoModel.cs" />
+    <Compile Include="Migrations\202110030422507_ModifyTodoModel.Designer.cs">
+      <DependentUpon>202110030422507_ModifyTodoModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -274,6 +278,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110010949452_CreateTodosTable.resx">
       <DependentUpon>202110010949452_CreateTodosTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110030422507_ModifyTodoModel.resx">
+      <DependentUpon>202110030422507_ModifyTodoModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
