@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TodosController.cs" />
@@ -186,10 +187,15 @@
     <Compile Include="Migrations\202110030422507_ModifyTodoModel.Designer.cs">
       <DependentUpon>202110030422507_ModifyTodoModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110031058031_CreateCategoriesModel.cs" />
+    <Compile Include="Migrations\202110031058031_CreateCategoriesModel.Designer.cs">
+      <DependentUpon>202110031058031_CreateCategoriesModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Todo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,6 +261,7 @@
     <Content Include="Views\Todos\Create.cshtml" />
     <Content Include="Views\Todos\Details.cshtml" />
     <Content Include="Views\Todos\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -281,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110030422507_ModifyTodoModel.resx">
       <DependentUpon>202110030422507_ModifyTodoModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110031058031_CreateCategoriesModel.resx">
+      <DependentUpon>202110031058031_CreateCategoriesModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
