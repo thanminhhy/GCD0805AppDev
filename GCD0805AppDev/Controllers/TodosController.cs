@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using GCD0805AppDev.ViewModels;
 
 namespace GCD0805AppDev.Controllers
 {
@@ -26,7 +27,12 @@ namespace GCD0805AppDev.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var categories = _context.Categories.ToList();
+            var viewModel = new TodoCategoriesViewModel()
+            {
+                Categories = categories
+            };
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult Create(Todo todo)
