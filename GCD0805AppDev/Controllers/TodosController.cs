@@ -60,7 +60,9 @@ namespace GCD0805AppDev.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            var todoInDb = _context.Todos.SingleOrDefault(t => t.Id == id);
+            var todoInDb = _context.Todos
+                .Include(t => t.Category)
+                .SingleOrDefault(t => t.Id == id);
             if (todoInDb == null)
             {
                 return HttpNotFound();
