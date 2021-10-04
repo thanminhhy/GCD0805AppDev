@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace GCD0805AppDev.Controllers
 {
+    [Authorize]
     public class TodosController : Controller
     {
         private ApplicationDbContext _context;
