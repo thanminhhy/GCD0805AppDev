@@ -35,17 +35,23 @@ namespace GCD0805AppDev.Controllers
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Todo todo)
+        public ActionResult Create(TodoCategoriesViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(todo);
+                var viewModel = new TodoCategoriesViewModel()
+                {
+                    Todo = model.Todo,
+                    Categories = _context.Categories.ToList()
+                };
+                return View(viewModel);
             }
 
             var newTodo = new Todo()
             {
-                Description = todo.Description,
-                DueDate = todo.DueDate
+                Description = model.Todo.Description,
+                DueDate = model.Todo.DueDate,
+                CategoryId = model.Todo.CategoryId
             };
             _context.Todos.Add(newTodo);
             _context.SaveChanges();
@@ -83,7 +89,12 @@ namespace GCD0805AppDev.Controllers
             {
                 return HttpNotFound();
             }
-            return View(todoInDb);
+            var viewModel = new TodoCategoriesViewModel()
+            {
+                Todo = todoInDb,
+                Categories = _context.Categories.ToList()
+            };
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult Edit(Todo todo)
