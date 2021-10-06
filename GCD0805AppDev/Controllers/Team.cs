@@ -25,5 +25,20 @@ namespace GCD0805AppDev.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Create(Team team)
+        { 
+            if (!ModelState.IsValid)
+            {
+                return View(team);
+            }
+            var newTeam = new Team()
+            {
+                Name = team.Name
+            };
+            _context.Teams.Add(newTeam);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Teams");
+        }
     }
 }
