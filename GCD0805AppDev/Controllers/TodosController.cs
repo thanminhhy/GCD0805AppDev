@@ -6,10 +6,11 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using GCD0805AppDev.ViewModels;
 using Microsoft.AspNet.Identity;
+using GCD0805AppDev.Utils;
 
 namespace GCD0805AppDev.Controllers
 {
-    [Authorize(Roles = "user")]
+    [Authorize(Roles = Role.User)]
     public class TodosController : Controller
     {
         private ApplicationDbContext _context;
