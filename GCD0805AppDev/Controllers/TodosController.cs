@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace GCD0805AppDev.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "user")]
     public class TodosController : Controller
     {
         private ApplicationDbContext _context;
