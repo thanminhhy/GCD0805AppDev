@@ -20,5 +20,10 @@ namespace GCD0805AppDev.Controllers
             var newTeam = _context.Teams.ToList();
             return View(newTeam);
         }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
     }
 }
