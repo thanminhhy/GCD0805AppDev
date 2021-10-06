@@ -53,5 +53,34 @@ namespace GCD0805AppDev.Controllers
 
             return RedirectToAction("Index", "Teams");
         }
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var teamInDb = _context.Teams.SingleOrDefault(t => t.Id == id);
+            if(teamInDb == null)
+            {
+                return HttpNotFound();
+            }
+            return View(teamInDb);
+        }
+        [HttpPost]
+        public ActionResult Edit(Team team)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(team);
+            }
+
+            var teamInDb = _context.Teams.SingleOrDefault(t => t.Id == team.Id);
+            if(teamInDb == null)
+            {
+                return HttpNotFound();
+            }
+
+            teamInDb.Name = team.Name;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Teams");
+        }
     }
 }

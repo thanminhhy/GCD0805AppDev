@@ -286,6 +286,7 @@
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Teams\Index.cshtml" />
     <Content Include="Views\Teams\Create.cshtml" />
+    <Content Include="Views\Teams\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
