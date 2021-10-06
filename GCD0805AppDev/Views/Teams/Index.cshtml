@@ -1,7 +1,37 @@
-﻿
+﻿@model IEnumerable<GCD0805AppDev.Models.Team>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
-
+<div class="form-group">
+    @Html.ActionLink("Create a new Team", "Create", "Teams", new { @class = "btn btn-primary" })
+</div>
+<form>
+    <div class=" form-group">
+        <input type="text" class=" form-control" placeholder="Search Team by Name" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Name</td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Teams", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", "Teams", new { id = item.Id }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

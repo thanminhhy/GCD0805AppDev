@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GCD0805AppDev.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace GCD0805AppDev.Controllers
 {
     public class TeamsController : Controller
     {
+        ApplicationDbContext _context;
+        public TeamsController()
+        {
+            _context = new ApplicationDbContext();
+        }
         // GET: Teams
         public ActionResult Index()
         {
-            return View();
+            var newTeam = _context.Teams.ToList();
+            return View(newTeam);
         }
     }
 }
