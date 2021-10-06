@@ -40,5 +40,18 @@ namespace GCD0805AppDev.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Teams");
         }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var teamInDb = _context.Teams.SingleOrDefault(t => t.Id == id);
+            if(teamInDb == null)
+            {
+                return HttpNotFound();
+            }
+            _context.Teams.Remove(teamInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Teams");
+        }
     }
 }
