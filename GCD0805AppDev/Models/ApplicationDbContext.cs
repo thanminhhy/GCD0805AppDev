@@ -16,5 +16,6 @@ namespace GCD0805AppDev.Models
             return new ApplicationDbContext();
         }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }
