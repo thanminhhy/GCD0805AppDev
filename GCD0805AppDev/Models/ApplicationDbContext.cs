@@ -17,5 +17,6 @@ namespace GCD0805AppDev.Models
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<UserTeam> UserTeams { get; set; }
     }
 }
