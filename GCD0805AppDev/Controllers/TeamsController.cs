@@ -1,5 +1,6 @@
 ﻿using GCD0805AppDev.Models;
 using GCD0805AppDev.Utils;
+using GCD0805AppDev.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,6 +84,16 @@ namespace GCD0805AppDev.Controllers
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Teams");
+        }
+        [HttpGet]
+        public ActionResult AddUsers()
+        {
+            var viewModel = new UserTeamsViewModel()
+            {
+                Teams = _context.Teams.ToList(),
+                Users = _context.Users.ToList()
+            };
+            return View(viewModel);
         }
     }
 }
