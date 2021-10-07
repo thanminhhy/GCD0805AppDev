@@ -96,5 +96,18 @@ namespace GCD0805AppDev.Controllers
             };
             return View(viewModel);
         }
+        [HttpPost]
+        public ActionResult AddUsers(UserTeamsViewModel viewModel)
+        {
+            var model = new UserTeam()
+            {
+                UserId = viewModel.UserId,
+                TeamId = viewModel.TeamId
+            };
+            _context.UserTeams.Add(model);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Teams");
+        }
     }
 }
