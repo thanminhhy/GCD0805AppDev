@@ -1,4 +1,5 @@
 ﻿using GCD0805AppDev.Models;
+using GCD0805AppDev.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace GCD0805AppDev.Controllers
 {
+    [Authorize(Roles = Role.Manager)]
     public class TeamsController : Controller
     {
         ApplicationDbContext _context;

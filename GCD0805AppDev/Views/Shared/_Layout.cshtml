@@ -24,10 +24,16 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("My Todoes", "Index", "Todos")</li>
+                        if (User.IsInRole(GCD0805AppDev.Utils.Role.User))
+                        {
+                            <li>@Html.ActionLink("My Todoes", "Index", "Todos")</li>
+                        }
+                        else if (User.IsInRole(GCD0805AppDev.Utils.Role.Manager))
+                        {
+                            <li>@Html.ActionLink("Manage Team", "Index", "Teams")</li>
+                        }
                     }
-                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-                    <li>@Html.ActionLink("Teams", "Index", "Teams")</li>
+                    <li>@Html.ActionLink("Categories", "Index", "Categories")</li>  
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
