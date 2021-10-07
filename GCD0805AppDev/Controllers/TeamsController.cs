@@ -20,8 +20,16 @@ namespace GCD0805AppDev.Controllers
         // GET: Teams
         public ActionResult Index()
         {
-            var newTeam = _context.Teams.ToList();
-            return View(newTeam);
+            List<TeamUsersViewModel> viewModel = _context.UserTeams
+        .GroupBy(i => i.Team)
+        .Select(res => new TeamUsersViewModel
+        {
+            Team = res.Key,
+            Users = res.Select(u => u.User).ToList()
+        })
+        .ToList();
+
+            return View(viewModel);
         }
         [HttpGet]
         public ActionResult Create()
@@ -107,7 +115,7 @@ namespace GCD0805AppDev.Controllers
             _context.UserTeams.Add(model);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Teams");
+            return RedirectToAction("Index","Teams");
         }
     }
 }

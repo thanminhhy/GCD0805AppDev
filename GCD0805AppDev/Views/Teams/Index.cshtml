@@ -1,9 +1,9 @@
-﻿@model IEnumerable<GCD0805AppDev.Models.Team>
+﻿@model IEnumerable<GCD0805AppDev.ViewModels.TeamUsersViewModel>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>All Teams</h2>
 <div class="form-group">
     @Html.ActionLink("Create a new Team", "Create", "Teams", new { @class = "btn btn-primary" })
 </div>
@@ -16,22 +16,29 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Action</th>
+            <th scope="col">Team Members</th>
+            <th scope="col">Add Team Member</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <th scope="row">@item.Id</th>
-                <td>@item.Name</td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", "Teams", new { id = item.Id }, new { @class = "btn btn-danger" })
-                    @Html.ActionLink("Edit", "Edit", "Teams", new { id = item.Id }, new { @class = "btn btn-success" })
-                </td>
-            </tr>
+        <tr>
+            <td>@item.Team.Name</td>
+            <td>
+                <ul>
+                    @foreach (var user in item.Users)
+                    {
+                        <li>@user.Email</li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Add User to Team", "AddUsers", "Teams", new { @class = "btn btn-primary" })
+            </td>
+        </tr>
         }
     </tbody>
 </table>
