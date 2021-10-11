@@ -136,5 +136,20 @@ namespace GCD0805AppDev.Controllers
             };
             return View(viewModel);
         }
+        [HttpPost]
+        public ActionResult RemoveUser(UserTeamsViewModel viewModel)
+        {
+            var userTeam = _context.UserTeams
+                .SingleOrDefault(t => t.TeamId == viewModel.TeamId && t.UserId == viewModel.UserId);
+
+            if(userTeam == null)
+            {
+                return HttpNotFound();
+            }
+            _context.UserTeams.Remove(userTeam);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Teams");
+        }
     }
 }
