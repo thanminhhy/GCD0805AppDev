@@ -17,9 +17,8 @@
     <thead>
         <tr>
             <th scope="col">Name</th>
-            <th scope="col">Action</th>
             <th scope="col">Team Members</th>
-            <th scope="col">Add Team Member</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +36,7 @@
             </td>
             <td>
                 @Html.ActionLink("Add User to Team", "AddUsers", "Teams", new { @class = "btn btn-primary" })
+                @Html.ActionLink("Remove User", "RemoveUser", "Teams", new { @class = "btn btn-danger" })
             </td>
         </tr>
         }

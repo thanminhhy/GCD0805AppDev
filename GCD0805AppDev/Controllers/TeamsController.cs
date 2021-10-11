@@ -117,5 +117,24 @@ namespace GCD0805AppDev.Controllers
 
             return RedirectToAction("Index","Teams");
         }
+        [HttpGet]
+        public ActionResult RemoveUser()
+        {
+            var users = _context.UserTeams
+                .Select(t => t.User)
+                .Distinct()
+                .ToList();
+            var teams = _context.UserTeams
+                .Select(t => t.Team)
+                .Distinct()
+                .ToList();
+
+            var viewModel = new UserTeamsViewModel()
+            {
+                Teams = teams,
+                Users = users
+            };
+            return View(viewModel);
+        }
     }
 }
