@@ -4,7 +4,7 @@
 }
 
 <h2>Create Manager</h2>
-@using (Html.BeginForm("Create Manager Account", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("CreateManager", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <h4>Create a new manager account.</h4>

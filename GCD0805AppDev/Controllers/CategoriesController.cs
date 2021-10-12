@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GCD0805AppDev.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace GCD0805AppDev.Controllers
 {
