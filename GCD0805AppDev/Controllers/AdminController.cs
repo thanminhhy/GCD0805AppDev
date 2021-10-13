@@ -1,13 +1,11 @@
-﻿using GCD0805AppDev.Utils;
-using GCD0805AppDev.Models;
-using System;
-using System.Collections.Generic;
+﻿using GCD0805AppDev.Models;
+using GCD0805AppDev.Utils;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 
 namespace GCD0805AppDev.Controllers
 {
@@ -18,7 +16,7 @@ namespace GCD0805AppDev.Controllers
         private ApplicationUserManager _userManager;
         public AdminController()
         {
-
+            _context = new ApplicationDbContext();
         }
         public AdminController(ApplicationUserManager userManager)
         {
@@ -78,6 +76,22 @@ namespace GCD0805AppDev.Controllers
             {
                 ModelState.AddModelError("", error);
             }
+        }
+        [HttpGet]
+        public ActionResult GetManagers()
+        {
+            var role = _context.Roles.SingleOrDefault(m => m.Name == Role.Manager);
+            var manager = _context.Users.Where(m => m.Roles.Any(r => r.RoleId == role.Id)).ToList();
+            ViewBag.Title = "Get Managers";
+            return View("AccountInfo", manager);
+        }
+        [HttpGet]
+        public ActionResult GetUsers()
+        {
+            var role = _context.Roles.SingleOrDefault(m => m.Name == Role.User);
+            var user = _context.Users.Where(m => m.Roles.Any(r => r.RoleId == role.Id)).ToList();
+            ViewBag.Title = "Get Users";
+            return View("AccountInfo", user);
         }
     }
 }
