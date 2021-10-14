@@ -19,7 +19,7 @@ namespace GCD0805AppDev.Controllers
             _context = new ApplicationDbContext();
         }
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             var userId = User.Identity.GetUserId();
             var todos = _context.Todos
@@ -27,6 +27,13 @@ namespace GCD0805AppDev.Controllers
                 .Where(t => t.UserId == userId)
                 .ToList();
 
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                todos = todos
+                    .Where(t => t.Description.ToLower().Contains(searchString.ToLower())
+                    || t.Category.Description.ToLower().Contains(searchString.ToLower()))
+                    .ToList();
+            }
             return View(todos);
         }
         [HttpGet]

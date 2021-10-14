@@ -9,12 +9,14 @@
     @Html.ActionLink("Stats", "Stats", "Todos", new { @class = "btn btn-info" })
     @Html.ActionLink("My Team", "Belong", "Todos", new { @class = "btn btn-default" })
 </div>
-<form>
-    <div class=" form-group">
-        <input type="text" class=" form-control" placeholder="Search Todo by Name"/>
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+
+@using (Html.BeginForm("Index","Todos", FormMethod.Get))
+            {
+                <div class="form-group">
+                    @Html.TextBox("searchString", null, new { @class = "form-control" })
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            }
 @*<ul>
       <li>Id: @Model.Id</li>
       <li>Description: @Model.Description</li>
