@@ -25,7 +25,7 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>@item.Team.Name</td>
+            <td>@Html.ActionLink(item.Team.Name, "TeamMembers", new { id = item.Team.Id})</td>
             <td>
                 <ul>
                     @foreach (var user in item.Users)

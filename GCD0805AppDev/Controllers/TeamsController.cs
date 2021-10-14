@@ -151,5 +151,14 @@ namespace GCD0805AppDev.Controllers
 
             return RedirectToAction("Index", "Teams");
         }
+        [HttpGet]
+        public ActionResult TeamMembers(int id)
+        {
+            var teamMembers = _context.UserTeams
+                .Where(t => t.TeamId == id)
+                .Select(t => t.User)
+                .ToList();
+            return View(teamMembers);
+        }
     }
 }
