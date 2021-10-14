@@ -141,5 +141,17 @@ namespace GCD0805AppDev.Controllers
 
             return View(stats);
         }
+        [HttpGet]
+        public ActionResult Belong()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var teams = _context.UserTeams
+                .Where(t => t.UserId == userId)
+                .Select(t => t.Team)
+                .ToList();
+
+            return View(teams);
+        }
     }
 }
